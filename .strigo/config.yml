@@ -1,0 +1,6 @@
+---
+classes:
+  - exercises:
+      - file: "../exercises/recap-day1.mdc"
+        title: "Recap Day 1"
+
