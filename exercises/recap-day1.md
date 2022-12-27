@@ -41,26 +41,23 @@ Please create a new EKS cluster by:
   e.  Use the following instanceSelector:
 
 ```
-
 instanceSelector: 
-
   vCPUs: 2
-
   memory: 4GiB
-
 ```
 
   f. Set `ssh.allow` to `true`
 
   g, Now save `cluster.yaml` and create the cluster by running: `eksctl create cluster -f cluster.yaml`
 
-
+--
 
 While the cluster is getting created:
 
 
 
 - Install Helm: `curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash`
+
 
 - Create a new helm chart to:
 
