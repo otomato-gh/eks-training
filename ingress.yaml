@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: httpenv
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+spec:
+  rules:
+  - host: httpenv.54.216.218.35.nip.io
+    http:
+      paths:
+      - path: /
+        pathType: Exact
+        backend:
+          service:
+            name: httpenv
+            port:
+              number: 8888
