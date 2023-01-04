@@ -2,7 +2,7 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: basic-cluster
+  name: training
   region: eu-west-1
 
 managedNodeGroups:
@@ -11,9 +11,9 @@ managedNodeGroups:
     instanceType: t2.medium
     desiredCapacity: 2
     minSize: 1
-    maxSize: 3
+    maxSize: 5
     tags:
-      nodegrourole: test
+      nodegrouprole: test
     volumeSize: 20
     iam:
       withAddonPolicies:
@@ -23,6 +23,11 @@ managedNodeGroups:
         albIngress: true
         autoScaler: true
         ebs: true
+        efs: true
+        imageBuilder: true
+        appMesh: true
+        xRay: true
+        cloudWatch: true
     ssh:
       allow: true # will use ~/.ssh/id_rsa.pub as the default ssh key
 
