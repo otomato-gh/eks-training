@@ -11,7 +11,7 @@ managedNodeGroups:
     instanceType: c5.large
     desiredCapacity: 2
     minSize: 1
-    maxSize: 5
+    maxSize: 3
     tags:
       nodegrouprole: test
     volumeSize: 20
