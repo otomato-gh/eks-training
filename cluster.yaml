@@ -8,7 +8,7 @@ metadata:
 managedNodeGroups:
   - name: ng-1
     labels: { role: regulars }
-    instanceType: t2.medium
+    instanceType: c5.large
     desiredCapacity: 2
     minSize: 1
     maxSize: 5
