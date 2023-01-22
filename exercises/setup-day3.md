@@ -5,7 +5,7 @@
 - Go into the repo and create the cluster with the nodegroup:
     ```
     cd eks-training
-    eksctl create -f cluster.yaml
+    eksctl create cluster -f cluster.yaml
     ```
 - Set up OIDC for the cluster: 
   ```
