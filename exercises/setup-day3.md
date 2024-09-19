@@ -1,16 +1,17 @@
 
-- Configure the aws cli for your user account and region eu-west-1
-- Run: `ssh-keygen -q -N '' -f /home/ubuntu/.ssh/id_rsa` (to generate the id_rsa.pub)
-- Clone the training repo: `git clone https://github.com/otomato-gh/eks-training.git`
-- Go into the repo and create the cluster with the nodegroup:
-    ```
-    cd eks-training
-    eksctl create cluster -f cluster.yaml
-    ```
-- Set up OIDC for the cluster: 
-  ```
-  eksctl utils associate-iam-oidc-provider \
-    --region ${AWS_REGION} \
-    --cluster eksworkshop-eksctl \
-    --approve
-  ```
+- Configure the aws cli for your user account and region eu-central-1
+```bash
+export EKS_USER=<your_user>
+export AWS_ACCESS_KEY_ID=YOUR_ACCES_KEY_ID
+export AWS_SECRET_ACCESS_KEY=YOUR_SECRET_ACCESS_KEY
+export AWS_DEFAULT_REGION=eu-central-1
+```
+- Create cluster credentials:
+```bash
+aws eks update-kubeconfig --region eu-central-1  --name training
+kubectl config set-context --current --namespace=<your_user>
+```
+- Verify
+```bash
+kubectl get all
+```
