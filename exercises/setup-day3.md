@@ -9,7 +9,7 @@ export AWS_DEFAULT_REGION=eu-central-1
 - Create cluster credentials:
 ```bash
 aws eks update-kubeconfig --region eu-central-1  --name training
-kubectl config set-context --current --namespace=<your_user>
+kubectl config set-context --current --namespace=${EKS_USER}
 ```
 - Verify
 ```bash
