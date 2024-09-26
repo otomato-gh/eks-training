@@ -2,32 +2,47 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: eksworkshop-eksctl
-  region: eu-west-1
+  name: training
+  region: eu-central-1
+  version: "1.30"
+  tags:
+    karpenter.sh/discovery: training
+iam:
+  withOIDC: true
 
 managedNodeGroups:
   - name: ng-1
-    labels: { role: regulars }
-    instanceType: c5.large
+    labels: { role: worker }
+    instanceType: t2.medium
     desiredCapacity: 2
     minSize: 1
     maxSize: 3
     tags:
-      nodegrouprole: test
+      nodegrouprole: training
     volumeSize: 20
+    updateConfig:
+      maxUnavailablePercentage: 50
     iam:
       withAddonPolicies:
         externalDNS: true
         certManager: true
         awsLoadBalancerController: true
         albIngress: true
-        autoScaler: true
         ebs: true
         efs: true
         imageBuilder: true
-        appMesh: true
-        xRay: true
         cloudWatch: true
     ssh:
       allow: true # will use ~/.ssh/id_rsa.pub as the default ssh key
 
+addons:
+- name: aws-ebs-csi-driver
+- name: vpc-cni
+
+
+
+
+karpenter:
+  version: '0.37.0'
+  createServiceAccount: true
+  withSpotInterruptionQueue: true 
