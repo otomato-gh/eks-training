@@ -3,11 +3,12 @@ kind: Ingress
 metadata:
   name: httpenv
   annotations:
-    kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/group.name: rafael
 spec:
+  ingressClassName: alb
   rules:
-  - host: httpenv.54.216.218.35.nip.io
+  - host: httpenv.18.184.31.74.nip.io
     http:
       paths:
       - path: /
